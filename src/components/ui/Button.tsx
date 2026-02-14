@@ -10,6 +10,7 @@ interface ButtonProps {
   href?: string
   onClick?: () => void
   className?: string
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export default function Button({
@@ -19,6 +20,7 @@ export default function Button({
   href,
   onClick,
   className = '',
+  type = 'button',
 }: ButtonProps) {
   const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200'
 
@@ -51,6 +53,7 @@ export default function Button({
 
   return (
     <motion.button
+      type={type}
       onClick={onClick}
       className={buttonStyles}
       whileHover={{ scale: 1.02 }}

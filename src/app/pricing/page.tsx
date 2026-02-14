@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Check, HelpCircle, ArrowRight, Mail, Infinity, Clock, Megaphone } from 'lucide-react'
@@ -259,7 +259,7 @@ const faqs = [
   },
 ]
 
-export default function PricingPage() {
+function PricingPageContent() {
   const searchParams = useSearchParams()
   const [emailCount, setEmailCount] = useState(100000)
   const [selectedContacts, setSelectedContacts] = useState(250)
@@ -804,5 +804,13 @@ export default function PricingPage() {
 
       <Footer />
     </main>
+  )
+}
+
+export default function PricingPage() {
+  return (
+    <Suspense>
+      <PricingPageContent />
+    </Suspense>
   )
 }
